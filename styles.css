@@ -239,6 +239,28 @@ p {
 }
 
 /* Make logo text hide on very small screens if needed, but keeping for now */
+.logo-text-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.logo-title {
+    font-size: 0.95rem;
+    /* Slightly smaller than previous single line but bold */
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.logo-subtitle {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    /* Using accent color for contrast */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
 
 .nav-links {
     display: flex;
