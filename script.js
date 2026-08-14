@@ -14,8 +14,8 @@ const CONFIG = {
         gmaps: "https://share.google/fxdYJq24gYx4m7pKx" // Using review link as map link for now unless specific map link provided
     },
     content: {
-        address: "3rd floor, Plot no 6, behind Aruna Diagnostics Center, beside Terrace Grill Car Parking, Srinivasa Nagar Colony, Kapra, A. S. Rao Nagar, Hyderabad, Secunderabad, Telangana 500062",
-        timings: "<strong>Clinic Consultation (Kapra):</strong><br>Mon - Sat: 8:00 AM - 10:00 AM & 7:00 PM - 9:00 PM<br><br><strong>KIMS Sunshine:</strong><br>Mon - Sat: 10:00 AM - 5:00 PM<br><br><strong>Sunday:</strong><br>11:00 AM - 1:00 PM (By Appointment)",
+        address: "3rd floor, Plot no 6, behind Aruna Diagnostics Center, beside Terrace Grill Car Parking, Srinivasa Nagar Colony, Dr. AS Rao Nagar, Hyderabad, Secunderabad, Telangana 500062",
+        timings: "<strong>Clinic Consultation (Dr. AS Rao Nagar):</strong><br>Mon - Sat: 8:00 AM - 10:00 AM & 7:00 PM - 9:00 PM<br><br><strong>KIMS Sunshine:</strong><br>Mon - Sat: 10:00 AM - 5:00 PM<br><br><strong>Sunday:</strong><br>11:00 AM - 1:00 PM (By Appointment)",
         year_founded: 2024
     }
 };
