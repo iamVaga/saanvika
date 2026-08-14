@@ -10,13 +10,12 @@ const CONFIG = {
         whatsapp: "https://wa.me/918143368858?text=Hi%20Dr%20Harsha%2C%20I%20would%20like%20to%20book%20an%20appointment.",
         call: "9381003480",
         instagram: "https://www.instagram.com/saanvikakidneyandrology?igsh=dHA2ZDIwaHduY2s4",
-        youtube: "https://youtube.com/@saanvikakidneyandrologycare?si=dLr066crHcfRao8a",
         google_reviews: "https://share.google/fxdYJq24gYx4m7pKx",
         gmaps: "https://share.google/fxdYJq24gYx4m7pKx" // Using review link as map link for now unless specific map link provided
     },
     content: {
         address: "3rd floor, Plot no 6, behind Aruna Diagnostics Center, beside Terrace Grill Car Parking, Srinivasa Nagar Colony, Kapra, A. S. Rao Nagar, Hyderabad, Secunderabad, Telangana 500062",
-        timings: "<strong>KIMS Sunshine:</strong> Mon - Sat: 10AM - 5PM<br><br><strong>Online Consultation:</strong><br>Mon - Sat: 7PM - 9PM<br>Sun: 11AM - 1PM",
+        timings: "<strong>Clinic Consultation (Kapra):</strong><br>Mon - Sat: 8:00 AM - 10:00 AM & 7:00 PM - 9:00 PM<br><br><strong>KIMS Sunshine:</strong><br>Mon - Sat: 10:00 AM - 5:00 PM<br><br><strong>Sunday:</strong><br>11:00 AM - 1:00 PM (By Appointment)",
         year_founded: 2024
     }
 };
@@ -51,6 +50,12 @@ function initContent() {
 
     const calendlyLinks = document.querySelectorAll('.calendly-link-action');
     calendlyLinks.forEach(el => el.href = CONFIG.links.calendly);
+
+    const instagramLinks = document.querySelectorAll('.instagram-link-action');
+    instagramLinks.forEach(el => {
+        el.href = CONFIG.links.instagram;
+        el.target = "_blank";
+    });
 
     const googleReviewLinks = document.querySelectorAll('.google-review-link');
     googleReviewLinks.forEach(el => {
@@ -90,7 +95,8 @@ function initNavbar() {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 // Close mobile menu if open
-                document.getElementById('mobile-menu').classList.remove('active');
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu) mobileMenu.classList.remove('active');
 
                 const headerOffset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top;
@@ -112,12 +118,6 @@ function initMobileMenu() {
     if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
-
-            // Optional: Animate icon or change state
-            const icon = menuToggle.querySelector('svg');
-            if (mobileMenu.classList.contains('active')) {
-                // Change to X icon could go here, but opacity toggle is fine or simple transform
-            }
         });
     }
 }
@@ -145,15 +145,16 @@ function initAnimations() {
 
 function initLightbox() {
     const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.querySelector('.lightbox-close');
     const prevBtn = document.querySelector('.lightbox-prev');
     const nextBtn = document.querySelector('.lightbox-next');
     const galleryItems = document.querySelectorAll('.gallery-item');
+    if (!galleryItems || galleryItems.length === 0) return;
 
     // Create an array of image sources from the unique items (not duplicates)
-    // We assume the first 5 items are unique
-    const uniqueItemsCount = 5;
+    const uniqueItemsCount = Math.min(5, galleryItems.length);
     const images = [];
 
     for (let i = 0; i < uniqueItemsCount; i++) {
@@ -168,7 +169,7 @@ function initLightbox() {
         if (index >= images.length) index = 0;
 
         currentIndex = index;
-        lightboxImg.src = images[currentIndex];
+        if (lightboxImg) lightboxImg.src = images[currentIndex];
     }
 
     function openLightbox(index) {
@@ -185,22 +186,26 @@ function initLightbox() {
     // Event Listeners
     galleryItems.forEach(item => {
         item.addEventListener('click', () => {
-            const index = parseInt(item.getAttribute('data-index'));
+            const index = parseInt(item.getAttribute('data-index')) || 0;
             openLightbox(index);
         });
     });
 
-    closeBtn.addEventListener('click', closeLightbox);
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
 
-    prevBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showImage(currentIndex - 1);
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showImage(currentIndex - 1);
+        });
+    }
 
-    nextBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        showImage(currentIndex + 1);
-    });
+    if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showImage(currentIndex + 1);
+        });
+    }
 
     // Close on background click
     lightbox.addEventListener('click', (e) => {
