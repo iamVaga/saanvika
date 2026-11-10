@@ -1,0 +1,75 @@
+.theme-toggle {
+    position: fixed;
+    inset-inline-start: max(12px, env(safe-area-inset-left));
+    inset-block-end: max(12px, env(safe-area-inset-bottom));
+    z-index: 990;
+    min-height: 44px;
+    padding: 0.5rem 0.85rem;
+    border: 1px solid #8386ad;
+    border-radius: 999px;
+    background: var(--color-surface, var(--surface));
+    color: var(--color-text-dark, var(--ink));
+    box-shadow: 0 2px 8px #0003;
+    font: 600 0.875rem system-ui, sans-serif;
+    cursor: pointer;
+}
+
+.theme-toggle:focus-visible {
+    outline: 3px solid var(--color-primary, var(--accent));
+    outline-offset: 3px;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --color-bg: #121421;
+    --color-surface: #1d2032;
+    --color-text-dark: #f2f3ff;
+    --color-text-body: #d2d5e8;
+    --color-slate: #a8adca;
+    --color-primary: #b9baff;
+    --color-primary-light: #c9caff;
+    --color-accent: #ffad65;
+    --bg: #121421;
+    --surface: #1d2032;
+    --ink: #f2f3ff;
+    --muted: #c4c8e1;
+    --line: #444a66;
+    --accent: #b9baff;
+    --accent-soft: #30345b;
+    --warn: #ffb877;
+    --warn-soft: #442e25;
+}
+
+[data-theme="dark"] :is(.navbar, .navbar.scrolled, .chip, .doctor-highlight-card, .insta-showcase-card,
+    .insta-pillar-card, .google-badge, .testimonial-card, .contact-card, .social-card, .cv-table-container, footer) {
+    background: var(--color-surface);
+    border-color: #444a66;
+}
+
+[data-theme="dark"] :is(.instagram-section, .gallery-section) {
+    background: var(--color-bg);
+}
+
+[data-theme="dark"] .gallery-track-container::before {
+    background: linear-gradient(to right, var(--color-bg), transparent);
+}
+
+[data-theme="dark"] .gallery-track-container::after {
+    background: linear-gradient(to left, var(--color-bg), transparent);
+}
+
+[data-theme="dark"] :is(.btn-primary, .service-card:hover .icon-box) {
+    background: #41459d;
+}
+
+[data-theme="dark"] .booking-card {
+    background: linear-gradient(135deg, #282b73, #404492);
+}
+
+[data-theme="dark"] .banner-section {
+    background: #282b73 !important;
+}
+
+[data-theme="dark"] :is(.banner-section .btn, .btn-large) {
+    color: #282b73 !important;
+}
